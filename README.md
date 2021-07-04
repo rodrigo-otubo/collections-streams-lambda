@@ -1,2 +1,4 @@
-# java8
-Lambda, Streams , etc.
+Exemplos de:
+  - Tipos de collections
+  - Streams
+  - Lambdas
