@@ -66,10 +66,37 @@ public class Java8LambdaStream {
                 "the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s " +
                 "with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop " +
                 "publishing software like Aldus PageMaker including versions of Lorem Ipsum";
-        System.out.println(loremIpsum.length());
+        // TODO quebrar em 30 posicoes sem quebrar a palavra
 
-        Stream.of(loremIpsum.split(",")).forEach(System.out::println);
 
+        Aluno aluno = new Aluno("Rodrigo", "SI", 10);
+        Aluno aluno1 = new Aluno("Joao", "SI", 3);
+        Aluno aluno2 = new Aluno("Paulo", "SI", 6);
+        Aluno aluno3 = new Aluno("Bruno", "SI", 7);
+        Aluno aluno4 = new Aluno("Dipsy", "SI", 2);
+        Aluno aluno5 = new Aluno("Banana", "SI", 8);
+
+        List<Aluno> alunos = new ArrayList<>();
+        alunos.add(aluno);
+        alunos.add(aluno1);
+        alunos.add(aluno2);
+        alunos.add(aluno3);
+        alunos.add(aluno4);
+        alunos.add(aluno5);
+
+        alunos.stream()
+                .filter(e -> e.nota > 5)
+                .forEach(System.out::println);
+
+        List<Boolean> collect1 = alunos.stream()
+                .map(e -> e.nota < 5)
+                .collect(Collectors.toList());
+        System.out.println(collect1);
+
+        Map<Boolean, List<Aluno>> collect2 = alunos.stream()
+                .collect(Collectors.groupingBy(e -> e.nota < 5));
+
+        System.out.println(collect2);
 
 
     }
